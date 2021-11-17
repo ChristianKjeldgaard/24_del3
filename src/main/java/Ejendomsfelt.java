@@ -4,16 +4,28 @@ public class Ejendomsfelt extends Felt{
     Ejendomsfelt(String navn, int pris) {
         super(navn);
         ejer = null;
-        this.pris=pris;i
+        this.pris=pris;
     }
 
     @Override
     void ramt(Spiller spiller) {
         if (ejer == null) {
-            ejer.getKonto().påvrkBalance();
+            ejer.updateMoney(0);
         }
 
-        }
 
     }
+
+    public void setEjer(Spiller ejer) {
+        this.ejer = ejer;
+    }
+
+    public Spiller getEjer() {
+        return ejer;
+    }
+
+    public int getPris() {
+        return pris;
+    }
+}
 

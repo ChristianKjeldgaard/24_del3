@@ -1,4 +1,4 @@
-public class FængselKort extends chance.Chancekort {
+public class FængselKort extends Chancekort {
 
     private Felt felt;
 
@@ -7,9 +7,8 @@ public class FængselKort extends chance.Chancekort {
     }
 
     @Override
-    void brug(Spiller s) {
-        !if(s.getFelt().equels(fængsel)){
-            s.felt()
+    public void brug(Spiller s) {
+        if(s.getPosition().equals(null)){
         }
     }
 }

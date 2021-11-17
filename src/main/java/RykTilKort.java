@@ -1,4 +1,4 @@
-public class RykTilKort extends chance.Chancekort {
+public class RykTilKort extends Chancekort {
 
     private Felt felt;
 

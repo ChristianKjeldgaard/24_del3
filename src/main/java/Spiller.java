@@ -58,4 +58,6 @@ public class Spiller {
     }
 
 
+    public void teleporterTil(Felt felt) {
+    }
 }

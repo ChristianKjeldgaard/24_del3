@@ -2,10 +2,10 @@ public class Chancekortfortolker {
 
     public void brugKort(Spiller s, Chancekort kort){
 
-        if(kort.getClass() == chance.RykKort.class){
-            int ønsket_ryk;
+        if(kort.getClass() == RykKort.class){
+            int ønsket_ryk = 0;
             /*spørg ejer hvor mange felter han vil rykke (gui);*/
-            ((chance.RykKort) kort).setØnsket_ryk(ønsket_ryk);
+            ((RykKort) kort).setØnsket_ryk(ønsket_ryk);
             kort.brug(s);
         }
         if(kort.getClass() == RykTilKort.class){
@@ -14,7 +14,7 @@ public class Chancekortfortolker {
         if(kort.getClass() == BetalKort.class){
             kort.brug(s);
         }
-        if(kort.getClass() == chance.GratisFelt.class){
+        if(kort.getClass() == GratisFelt.class){
             kort.brug(s);
         }
         if (kort.getClass() == FængselKort.class){

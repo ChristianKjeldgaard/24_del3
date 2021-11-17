@@ -10,7 +10,7 @@ public class BetalKort extends Chancekort {
 
     @Override
     public void brug(Spiller s) {
-        s.betal(beløb);
+        s.updateMoney(beløb);
     }
 
 

@@ -8,16 +8,16 @@ public class GratisFelt extends Chancekort {
     }
 
     @Override
-    void brug(Spiller s) {
-        while(!s.getFelt().getFeltfarve().equals(felt)) {
+    public void brug(Spiller s) {
+        while(!s.getPosition().equals(felt)) {
             s.ryk(1);
         }
-
-        if (s.getFelt().getEjer() != null){
-            s.betal(-felt.getPris());
-            s.getFelt().getEjer().betal(felt.getPris());
+        Ejendomsfelt nuværendeFelt = ((Ejendomsfelt) s.getPosition());
+        if (nuværendeFelt.getEjer() != null){
+            s.updateMoney(-nuværendeFelt.getPris());
+            nuværendeFelt.getEjer().updateMoney(nuværendeFelt.getPris());
         }else{
-            s.getFelt().setEjer(s);
+            nuværendeFelt.setEjer(s);
         }
 /*
 
