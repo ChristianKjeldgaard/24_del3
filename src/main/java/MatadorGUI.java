@@ -1,18 +1,54 @@
 import gui_fields.*;
 import gui_main.GUI;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MatadorGUI {
     Map<Felt, GUI_Field> felterIGUI;
+    Map<Spiller, GUI_Player> spillerIGUI;
+    GUI_Player[] spillere;
     GUI gui;
     Spilklasse spilklasse;
-    public MatadorGUI(Spilklasse spilklasse)
+    public MatadorGUI()
     {
-        this.spilklasse = spilklasse;
+        GUI.setNull_fields_allowed(true);
+        this.spilklasse = new Spilklasse();
         link_felter();
-        gui = new GUI(lavGuiFelter());
+        GUI_Field[] felter = lavGuiFelter();
+        gui = new GUI(felter);
+        int spillere = gui.getUserInteger("Tast mellem 2 og 4 spillere");
+        spilklasse.setAntalSpillere(spillere);
+        kør_spillet();
+    }
+
+    private void kør_spillet(){
+        flytAlleBiler();
+        for (int i = 0; i < spilklasse.getSpillere().length; i++) {
+            GUI_Field nuværende_felt = felterIGUI.get(spilklasse.getSpillere()[i].getPosition());
+            nuværende_felt.setCar(spillerIGUI.get(spilklasse.getSpillere()[i]), true);
+        }
+    }
+
+    private void flytAlleBiler(){
+        for (int i = 0; i < lavGuiFelter().length; i++) {
+            lavGuiFelter()[i].removeAllCars();
+        }
+    }
+
+    private void lavSpillere(int antal){
+        String[] navne = new String[]{"Ahmed", "Caroline", "Seier Junior", "Oline"};
+        Color[] farver = new Color[]{Color.RED, Color.yellow, Color.green, Color.blue};
+        spillere = new GUI_Player[antal];
+        spillerIGUI = new HashMap<>();
+        for (int i = 0; i < antal; i++) {
+            GUI_Car bil = new GUI_Car();
+            bil.setPrimaryColor(farver[i]);
+            spillere[i] = new GUI_Player(navne[i], spilklasse.getSpillere()[i].getMoney(), bil);
+            spillerIGUI.put(spilklasse.getSpillere()[i], spillere[i]);
+        }
+
     }
 
     private void link_felter(){
@@ -47,9 +83,9 @@ public class MatadorGUI {
         felt.setRentLabel(pris);
         felterIGUI.put(felter[5], felt);
 
-        GUI_Empty besøgfængselFelt = new GUI_Empty();
-        besøgfængselFelt.setTitle(felter[6].navn);
-        felterIGUI.put(felter[6],besøgfængselFelt);
+        felt = new GUI_Street();
+        felt.setTitle(felter[6].navn);
+        felterIGUI.put(felter[6], felt);
 
         felt = new GUI_Street();
         felt.setTitle(felter[7].navn);
@@ -79,9 +115,9 @@ public class MatadorGUI {
         felt.setRentLabel(pris);
         felterIGUI.put(felter[11], felt);
 
-        GUI_Empty gratisparkeringFelt = new GUI_Empty();
-        gratisparkeringFelt.setTitle(felter[6].navn);
-        felterIGUI.put(felter[6],gratisparkeringFelt);
+        felt = new GUI_Street();
+        felt.setTitle(felter[12].navn);
+        felterIGUI.put(felter[12], felt);
 
         felt = new GUI_Street();
         felt.setTitle(felter[13].navn);

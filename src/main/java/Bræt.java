@@ -2,7 +2,7 @@ public class Bræt {
 
     private Felt[] felts;
 
-    public void Bræt() {
+    public Bræt() {
         felts = new Felt[24];
         felts[0] = new Start("Start");
         felts[1] = new Ejendomsfelt("Burgerbaren", 1);

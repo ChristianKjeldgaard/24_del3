@@ -3,11 +3,21 @@ public class Spilklasse {
     private Spiller harTur;
     private Terning terning;
     private Bræt bræt;
-    public Spilklasse(Spiller[] spillere){
-        this.spillere = spillere;
+    public Spilklasse(int antal_spillere){
+        this.spillere = new Spiller[antal_spillere];
         harTur = this.spillere[0];
         bræt = new Bræt();
     }
+    public Spilklasse(){
+        this.spillere = new Spiller[2];
+        harTur = this.spillere[0];
+        bræt = new Bræt();
+    }
+
+    public void setAntalSpillere(int antal){
+        spillere = new Spiller[antal];
+    }
+
     public void tag_næste_tur(){
         int flyt = terning.rul();
         harTur.ryk(flyt);
@@ -26,5 +36,9 @@ public class Spilklasse {
 
     public Bræt getBræt() {
         return bræt;
+    }
+
+    public Spiller[] getSpillere() {
+        return spillere;
     }
 }
