@@ -24,4 +24,7 @@ public class Spilklasse {
         }
     }
 
+    public Bræt getBræt() {
+        return bræt;
+    }
 }
