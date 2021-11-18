@@ -1,13 +1,9 @@
 public class Spiller {
-    private String name;
-    private int age;
     private int money = 35;
     private Felt felt;
     String property;
 
-    public Spiller(String name, int age){
-        this.name = name;
-        this.age = age;
+    public Spiller(){
     }
 
     public void ryk(int antal_felter){
@@ -20,11 +16,6 @@ public class Spiller {
     }
 
 
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setMoney(int money) {
         this.money = money;
     }
@@ -35,10 +26,6 @@ public class Spiller {
 
     public void setProperty(String property) {
         this.property = property;
-    }
-
-    public String getName(){
-        return name;
     }
 
     public int getMoney(){

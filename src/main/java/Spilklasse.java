@@ -16,6 +16,9 @@ public class Spilklasse {
 
     public void setAntalSpillere(int antal){
         spillere = new Spiller[antal];
+        for (int i = 0; i < antal; i++) {
+            spillere[i] = new Spiller();
+        }
     }
 
     public void tag_næste_tur(){
