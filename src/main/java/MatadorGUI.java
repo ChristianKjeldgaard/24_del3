@@ -11,7 +11,8 @@ public class MatadorGUI {
     public MatadorGUI(Spilklasse spilklasse)
     {
         this.spilklasse = spilklasse;
-        gui = new GUI();
+        link_felter();
+        gui = new GUI(lavGuiFelter());
     }
 
     private void link_felter(){
@@ -141,7 +142,13 @@ public class MatadorGUI {
         pris = Integer.toString(((Ejendomsfelt) felter[1]).getPris());
         felt.setRentLabel(pris);
         felterIGUI.put(felter[23], felt);
+    }
 
-
+    private GUI_Field[] lavGuiFelter(){
+        GUI_Field[] felter = new GUI_Field[24];
+        for(int i = 0; i < spilklasse.getBræt().getFelts().length; i++){
+            felter[i] = felterIGUI.get(spilklasse.getBræt().getFelts()[i]);
+        }
+        return felter;
     }
 }
